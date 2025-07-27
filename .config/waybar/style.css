@@ -1,0 +1,147 @@
+@define-color rosewater #ffe6ec;
+@define-color flamingo #ffafcc;
+@define-color pink #ff99e6;
+@define-color mauve #d9a3ff;
+@define-color red #ff6666;
+@define-color maroon #ff8c99;
+@define-color peach #ffbf80;
+@define-color yellow #ffe680;
+@define-color green #80ff99;
+@define-color teal #66e6cc;
+@define-color sky #66d9ff;
+@define-color sapphire #66b3ff;
+@define-color blue #80a3ff;
+@define-color lavender #cca3ff;
+@define-color text #f0f0ff;
+@define-color subtext1 #e0e0ff;
+@define-color subtext0 #c2c2ff;
+@define-color overlay2 #a3a3d9;
+@define-color overlay1 #8c8cc2;
+@define-color overlay0 #737399;
+@define-color surface2 #5959a6;
+@define-color surface1 #404073;
+@define-color surface0 #2e2e59;
+@define-color base #1c1c33;
+@define-color mantle #161626;
+@define-color crust #0f0f1c;
+
+* {
+  font-family: "JetBrainsMonoNL Nerd Font";
+  font-size: 14px;
+  font-weight: 500;
+}
+
+window#waybar {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  background-color: transparent;
+  color: @subtext0;
+}
+
+#workspaces button:hover {
+  color: @text;
+}
+
+#workspaces button.active {
+  box-shadow: inset 0 -3px @pink;
+  font-weight: 700
+}
+
+#battery,
+#tray,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom-media,
+#window,
+#workspaces,
+#custom-time,
+#custom-date {
+  padding: 0 10px;
+  margin: 0 5px;
+  background-color: alpha(@crust, 0.75);
+  border-radius: 15px;
+}
+
+#workspaces {
+  color: @mauve;
+}
+
+#pulseaudio {
+  color: @lavender;
+}
+
+#custom-media {
+  color: @blue;
+}
+
+#window {
+  color: @rosewater;
+}
+
+#network {
+  color: @sky;
+}
+
+#cpu {
+  color: @teal;
+}
+
+#memory {
+  color: @green;
+}
+
+#temperature {
+  color: @yellow;
+}
+
+#battery {
+  color: @peach;
+}
+
+#custom-time {
+  color: @flamingo;
+}
+
+#custom-date {
+  color: @pink;
+}
+
+.modules-right,
+.modules-left,
+.modules-center {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @teal;
+}
+
+#battery.critical:not(.charging) {
+  background-color: @red;
+  color: @crust;
+}
+
+label:focus {
+  background-color: @overlay0;
+  color: @text;
+}
+
+#pulseaudio.muted {
+  color: @overlay1;
+}

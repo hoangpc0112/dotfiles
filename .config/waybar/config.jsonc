@@ -1,0 +1,197 @@
+{
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "margin-bottom": -5,
+  "height": 30,
+  "modules-left": [
+    "hyprland/workspaces",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "custom/media"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "tray",
+    "network",
+    "cpu",
+    "memory",
+    "battery",
+    "custom/time",
+    "custom/date"
+  ],
+  "hyprland/window": {
+    "format": "{}",
+    "tooltip": false,
+    "min-length": 5,
+    "max-length": 50,
+    "rewrite": {
+      "": "<span foreground='#89b4fa'></span> Hyprland",
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
+      "tmux(.*)": "<span foreground='#a6e3a1'></span> Tmux",
+      "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span> Firefox",
+      "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span> $1",
+      "(.*)Zen Browser": "<span foreground='#fab387'>󰺕</span> Zen Browser",
+      "(.*) — Zen Browser": "<span foreground='#fab387'>󰺕</span> $1",
+      "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span> $1",
+      "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span> Visual Studio Code",
+      "nvim": "<span foreground='#a6e3a1'></span> Neovim ",
+      "nvim (.*)": "<span foreground='#a6e3a1'></span> $1",
+      "vim": "<span foreground='#a6e3a1'></span> Vim",
+      "vim (.*)": "<span foreground='#a6e3a1'></span> $1",
+      "(.*)Spotify": "<span foreground='#a6e3a1'></span> Spotify",
+      "(.*)Spotify Premium": "<span foreground='#a6e3a1'></span> Spotify Premium",
+      "OBS(.*)": "<span foreground='#a6adc8'>󰻃</span> OBS Studio",
+      "VLC media player": "<span foreground='#fab387'>󰕼</span> VLC Media Player",
+      "(.*) - VLC media player": "<span foreground='#fab387'>󰕼</span> $1",
+      "(.*) - mpv": "<span foreground='#cba6f7'></span> $1",
+      "qView": "󰋩 qView",
+      "(.*).jpg": "󰋩 $1.jpg",
+      "(.*).png": "󰋩 $1.png",
+      "(.*).svg": "󰋩 $1.svg",
+      "• Discord(.*)": "Discord $1",
+      "(.*)Discord(.*)": "<span foreground='#89b4fa'></span> $1 Discord $2",
+      "vesktop": "<span foreground='#89b4fa'></span> Discord",
+      "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'></span> OnlyOffice Desktop",
+      "(.*).docx": "<span foreground='#89b4fa'>󰈭</span> $1.docx",
+      "(.*).xlsx": "<span foreground='#a6e3a1'>󰈜</span> $1.xlsx",
+      "(.*).pptx": "<span foreground='#fab387'>󰈨</span> $1.pptx",
+      "(.*).pdf": "<span foreground='#f38ba8'></span> $1.pdf",
+      "Authenticate": " Authenticate"
+    }
+  },
+  "hyprland/workspaces": {
+    "rotate": 0,
+    "all-outputs": true,
+    "active-only": false,
+    "on-click": "activate",
+    "disable-scroll": true,
+    "persistent-workspaces": {
+      "*": 3
+    }
+  },
+  "custom/time": {
+    "format": "{}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "exec": "date '+ %H:%M'",
+    "interval": 60
+  },
+  "custom/date": {
+    "format": "{}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "exec": "date '+󰃭 %d/%m/%Y'",
+    "interval": 3600
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%"
+  },
+  "memory": {
+    "states": {
+      "c": 90,
+      "h": 60,
+      "m": 30
+    },
+    "interval": 30,
+    "format": "󰾆 {percentage}%",
+    "rotate": 0,
+    "format-m": "󰾅 {used}GB",
+    "format-h": "󰓅 {used}GB",
+    "format-c": " {used}GB",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "rotate": 0,
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "tray": {
+    "icon-size": 18,
+    "rotate": 0,
+    "spacing": 5
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "󰌘",
+    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+    "tooltip-format-ethernet": "󰌘 {ifname}",
+    "tooltip-format-disconnected": "󰌙 Disconnected",
+    "max-length": 10,
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "on-click": "kitty nmtui"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "rotate": 0,
+    "format-muted": "婢",
+    "on-click": "pavucontrol -t 3",
+    "tooltip-format": "{icon} {desc} // {volume}%",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source} {source_volume}%",
+    "rotate": 0,
+    "format-source": "",
+    "format-source-muted": "",
+    "on-click": "pavucontrol -t 4",
+    "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+    "scroll-step": 5
+  },
+  "custom/media": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "player_status=$(playerctl status 2>/dev/null); if [[ $player_status == 'Playing' ]]; then playerctl metadata --format '{\"text\": \"  Playing: {{ title }}\"}' || echo '{\"text\": \"  Playing: No media found\"}'; elif [[ $player_status == 'Paused' ]]; then playerctl metadata --format '{\"text\": \"  Paused: {{ title }}\"}' || echo '{\"text\": \"  Paused: No media found\"}'; else echo '{\"text\": \"  No media found\"}'; fi",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "max-length": 35,
+    "tooltip": true,
+    "escape": true,
+    "interval": 1
+  }
+}
