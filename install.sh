@@ -19,7 +19,8 @@ install_packages() {
   echo "Installing/updating packages ..."
   paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty thunar feh mpv \
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
-    firefox inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme breeze-gtk sddm swww cliphist grim slurp wl-clipboard
+    firefox inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
+    breeze-gtk sddm swww cliphist grim slurp wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland
 }
 
 setup_dotfiles() {
@@ -51,6 +52,8 @@ change_theme() {
   gsettings set org.gnome.desktop.interface gtk-theme "Breeze-Dark"
   gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+  gsettings set org.gnome.desktop.interface font-name "Inter Regular 11"
+  gsettings set org.gnome.desktop.interface monospace-font-name "JetBrainsMono Nerd Font 11"
 }
 
 enable_sddm(){
