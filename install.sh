@@ -40,7 +40,7 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/.config/kitty/" "$HOME/.config/kitty"
   create_symlink "$HOME/dotfiles/.config/rofi/" "$HOME/.config/rofi"
   create_symlink "$HOME/dotfiles/.config/waybar/" "$HOME/.config/waybar"
-  create_symlink "$HOME/dotfiles/wallpapers/" "$HOME/wallpapers"
+  create_symlink "$HOME/dotfiles/images/" "$HOME/images"
 
   create_symlink "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
   create_symlink "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
@@ -51,6 +51,11 @@ change_theme() {
   gsettings set org.gnome.desktop.interface gtk-theme "Breeze-Dark"
   gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+}
+
+enable_sddm(){
+  sudo systemctl disable display-manager.service
+  sudo systemctl enable sddm.service
 }
 
 install_paru

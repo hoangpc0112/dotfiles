@@ -10,9 +10,7 @@
     "pulseaudio#microphone",
     "custom/media"
   ],
-  "modules-center": [
-    "hyprland/window"
-  ],
+  "modules-center": ["hyprland/window"],
   "modules-right": [
     "tray",
     "network",
@@ -116,19 +114,7 @@
     "rotate": 0,
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-icons": [
-      "󰂎",
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ]
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   },
   "tray": {
     "icon-size": 18,
@@ -143,19 +129,13 @@
     "tooltip-format-ethernet": "󰌘 {ifname}",
     "tooltip-format-disconnected": "󰌙 Disconnected",
     "max-length": 10,
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "on-click": "kitty nmtui"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "rotate": 0,
-    "format-muted": "婢",
+    "format-muted": "󰝟",
     "on-click": "pavucontrol -t 3",
     "tooltip-format": "{icon} {desc} // {volume}%",
     "scroll-step": 5,
@@ -166,17 +146,13 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", ""]
     }
   },
   "pulseaudio#microphone": {
     "format": "{format_source} {source_volume}%",
     "rotate": 0,
-    "format-source": "",
+    "format-source": "",
     "format-source-muted": "",
     "on-click": "pavucontrol -t 4",
     "tooltip-format": "{format_source} {source_desc} // {source_volume}%",

@@ -46,10 +46,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# Custom environment
-export LINUXTOOLBOXDIR="$HOME/linuxtoolbox"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:/.local/share/flatpak/exports/bin"
-
 # Colored man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -188,36 +184,7 @@ gpa() {
 # Use starship, zoxide, fzf, thefuck
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-eval "$(thefuck --alias cc)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export FZF_DEFAULT_OPTS="
---style full \
---walker-skip .git,node_modules,target \
---no-height \
---no-reverse \
---prompt 'Files> ' \
---header 'CTRL-D: Directories / CTRL-F: Files' \
---input-label ' Input '
---header-label ' Entry Type ' \
---preview '~/.fzf/bin/fzf-preview.sh {}' \
---bind 'result:transform-list-label:
-  if [[ -z \$FZF_QUERY ]]; then
-    echo \" \$FZF_MATCH_COUNT items \"
-  else
-    echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
-  fi
-  ' \
---bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}' \
---bind 'focus:+transform-header:file --brief {} || echo \"No entry selected\"' \
---bind 'ctrl-d:change-prompt(Directories> )+reload(find . -type d)' \
---bind 'ctrl-f:change-prompt(Files> )+reload(find . -type f)' \
---color 'border:#aaaaaa,label:#cccccc' \
---color 'preview-border:#9999cc,preview-label:#ccccff' \
---color 'list-border:#669966,list-label:#99cc99' \
---color 'input-border:#996666,input-label:#ffcccc' \
---color 'header-border:#6699cc,header-label:#99ccff'
-"
 
 # Auto-ls on directory change
 cd() {
@@ -230,13 +197,4 @@ cd() {
 
 z() {
   __zoxide_z "$@" && ls
-}
-
-# neovim + fzf multi-select
-nf() {
-  local result
-  result=$(fzf -m)
-  if [ -n "$result" ]; then
-    nv "$result"
-  fi
 }
