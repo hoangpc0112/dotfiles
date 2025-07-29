@@ -48,7 +48,7 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/.config/starship.toml" "$HOME/.config/starship.toml"
 }
 
-change_theme() {
+install_gtk_theme() {
   gsettings set org.gnome.desktop.interface gtk-theme "Breeze-Dark"
   gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
@@ -61,8 +61,17 @@ enable_sddm(){
   sudo systemctl enable sddm.service
 }
 
+change_sddm_theme() {
+  git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
+  sudo cp -r ~/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
+  echo "[Theme]
+  Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
+}
+
 install_paru
 install_packages
 setup_dotfiles
-change_theme
+change_gtk_theme
+change_sddm_theme
+
 echo "Installation complete! Please reboot or log out/log in for changes to take effect."
