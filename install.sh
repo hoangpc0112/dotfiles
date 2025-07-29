@@ -12,6 +12,8 @@ install_paru() {
     git clone https://aur.archlinux.org/paru.git "$HOME/paru"
     cd "$HOME/paru"
     makepkg -si --noconfirm
+    cd "$HOME"
+    rm -rf "$HOME/paru"
   fi
 }
 
@@ -44,7 +46,6 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/images/" "$HOME/images"
 
   create_symlink "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
-  create_symlink "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
   create_symlink "$HOME/dotfiles/.config/starship.toml" "$HOME/.config/starship.toml"
 }
 
@@ -65,13 +66,16 @@ change_sddm_theme() {
   git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
   sudo cp -r ~/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
   echo "[Theme]
-  Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
+  Current=minesddm" | sudo tee /etc/sddm.conf
+  cd "$HOME"
+  rm -rf "$HOME/sddm-theme-minesddm"
 }
 
 install_paru
 install_packages
 setup_dotfiles
-change_gtk_theme
+install_gtk_theme
+enable_sddm
 change_sddm_theme
 
 echo "Installation complete! Please reboot or log out/log in for changes to take effect."
