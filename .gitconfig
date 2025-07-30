@@ -1,9 +1,9 @@
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+# [url "git@github.com:"]
+#     insteadOf = https://github.com/
 
-[user]
-	email = phamchinhhoang@gmail.com
-	name = hoangpc0112
+# [user]
+# 	email = phamchinhhoang@gmail.com
+# 	name = hoangpc0112
 
 [color]
   ui = auto
