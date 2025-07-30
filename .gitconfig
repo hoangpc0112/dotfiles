@@ -1,0 +1,28 @@
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+[user]
+	email = phamchinhhoang@gmail.com
+	name = hoangpc0112
+
+[color]
+  ui = auto
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red normal
+  new = green normal
+  whitespace = red reverse
+
+[diff]
+  compactionHeuristics = true
+  algorithm = patience
+  wsErrorHighlight = all
+  context = 5
+
+[core]
+  pager = less -FSRX
+
+[init]
+  defaultBranch = main
