@@ -24,7 +24,7 @@ install_packages() {
   paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty thunar feh mpv \
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
-    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland	gnome-disk-utility btop
+    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland btop
 }
 
 setup_dotfiles() {
@@ -50,6 +50,10 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
   create_symlink "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
   create_symlink "$HOME/dotfiles/.config/starship.toml" "$HOME/.config/starship.toml"
+  create_symlink "$HOME/dotfiles/images/wallpapers/aesthetic_1.jpg" "$HOME/.config/hypr/current_wallpaper"
+  create_symlink "$HOME/dotfiles/.config/nvim/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
+
+  chmod +x $HOME/.config/hypr/scripts/*
 }
 
 change_gtk_theme() {
@@ -65,7 +69,7 @@ change_sddm_theme() {
   echo "Changing sddm theme ..."
 
   git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
-  sudo cp -r ~/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
+  sudo cp -r $HOME/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
   echo "[Theme]
   Current=minesddm" | sudo tee /etc/sddm.conf
   cd "$HOME"
@@ -74,12 +78,18 @@ change_sddm_theme() {
 
 start_service() {
   sudo systemctl enable sddm.service
-  sudo systemctl enable blutooth.service
+  sudo systemctl enable bluetooth.service
+}
+
+install_lazyvim() {
+  git clone https://github.com/LazyVim/starter $HOME/.config/nvim
+  rm -rf $HOME/.config/nvim/.git
 }
 
 install_paru
 install_packages
 start_service
+install_lazyvim
 setup_dotfiles
 change_gtk_theme
 change_sddm_theme

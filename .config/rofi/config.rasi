@@ -1,4 +1,4 @@
-#theme "theme.rasi"
+@theme "theme.rasi"
 
 configuration {
   font: "Inter 11";
