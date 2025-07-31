@@ -20,10 +20,11 @@ install_paru() {
 
 install_packages() {
   echo "Installing/updating packages ..."
+  paru --noconfirm
   paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty thunar feh mpv \
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
-    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland
+    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland	gnome-disk-utility btop
 }
 
 setup_dotfiles() {
@@ -62,7 +63,6 @@ change_gtk_theme() {
 
 change_sddm_theme() {
   echo "Changing sddm theme ..."
-  sudo systemctl enable sddm.service
 
   git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
   sudo cp -r ~/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
@@ -72,8 +72,14 @@ change_sddm_theme() {
   rm -rf "$HOME/sddm-theme-minesddm"
 }
 
+start_service() {
+  sudo systemctl enable sddm.service
+  sudo systemctl enable blutooth.service
+}
+
 install_paru
 install_packages
+start_service
 setup_dotfiles
 change_gtk_theme
 change_sddm_theme
