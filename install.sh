@@ -20,11 +20,11 @@ install_paru() {
 
 install_packages() {
   echo "Installing/updating packages ..."
-  paru --noconfirm
+  paru -Syu --noconfirm
   paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty thunar feh mpv \
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
-    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland btop
+    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland btop blueman
 }
 
 setup_dotfiles() {
