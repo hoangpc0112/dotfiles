@@ -2,14 +2,11 @@
 
 install_paru() {
   sudo pacman -S --noconfirm --needed base-devel git
-  echo "Checking paru ..."
 
   if command -v paru &>/dev/null; then
     echo "paru is already installed. Skipping ..."
   else
-    echo "Installing paru ..."
     rm -rf "$HOME/paru"
-
     git clone https://aur.archlinux.org/paru.git "$HOME/paru"
     cd "$HOME/paru"
     makepkg -si --noconfirm
@@ -19,7 +16,6 @@ install_paru() {
 }
 
 install_packages() {
-  echo "Installing/updating packages ..."
   paru -Syu --noconfirm
   paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty thunar feh mpv \
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
@@ -27,19 +23,17 @@ install_packages() {
     breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland btop blueman
 }
 
+create_symlink() {
+  local source_path="$1"
+  local target_path="$2"
+
+  if [ -e "$target_path" ] || [ -L "$target_path" ]; then
+    rm -rf "$target_path"
+  fi
+  ln -sf "$source_path" "$target_path"
+}
+
 setup_dotfiles() {
-  echo "Setting up dotfiles ..."
-
-  create_symlink() {
-    local source_path="$1"
-    local target_path="$2"
-
-    if [ -e "$target_path" ] || [ -L "$target_path" ]; then
-      rm -rf "$target_path"
-    fi
-    ln -sf "$source_path" "$target_path"
-  }
-
   create_symlink "$HOME/dotfiles/.config/fastfetch/" "$HOME/.config/fastfetch"
   create_symlink "$HOME/dotfiles/.config/hypr/" "$HOME/.config/hypr"
   create_symlink "$HOME/dotfiles/.config/kitty/" "$HOME/.config/kitty"
@@ -57,7 +51,6 @@ setup_dotfiles() {
 }
 
 change_gtk_theme() {
-  echo "Changing gtk theme ..."
   gsettings set org.gnome.desktop.interface gtk-theme "Breeze-Dark"
   gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
@@ -66,8 +59,6 @@ change_gtk_theme() {
 }
 
 change_sddm_theme() {
-  echo "Changing sddm theme ..."
-
   git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
   sudo cp -r $HOME/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
   echo "[Theme]

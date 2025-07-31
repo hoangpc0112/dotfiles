@@ -67,6 +67,7 @@
     "all-outputs": true,
     "active-only": false,
     "on-click": "activate",
+    "tooltip": false,
     "disable-scroll": true,
     "persistent-workspaces": {
       "*": 3
@@ -74,18 +75,19 @@
   },
   "custom/time": {
     "format": "{}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "exec": "date '+ %H:%M'",
+    "tooltip": false,
     "interval": 60
   },
   "custom/date": {
     "format": "{}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "tooltip": false,
     "exec": "date '+󰃭 %d/%m/%Y'",
     "interval": 3600
   },
   "cpu": {
     "interval": 10,
+    "tooltip": false,
     "format": " {usage}%"
   },
   "memory": {
@@ -101,8 +103,7 @@
     "format-h": "󰓅 {used}GB",
     "format-c": " {used}GB",
     "max-length": 10,
-    "tooltip": true,
-    "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
+    "tooltip": false
   },
   "battery": {
     "states": {
@@ -111,6 +112,7 @@
       "critical": 20
     },
     "format": "{icon} {capacity}%",
+    "tooltip": false,
     "rotate": 0,
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
@@ -119,15 +121,14 @@
   "tray": {
     "icon-size": 18,
     "rotate": 0,
+    "tooltip": false,
     "spacing": 5
   },
   "network": {
     "format": "{ifname}",
     "format-wifi": "{icon} {essid}",
     "format-ethernet": "󰌘",
-    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-    "tooltip-format-ethernet": "󰌘 {ifname}",
-    "tooltip-format-disconnected": "󰌙 Disconnected",
+    "tooltip": false,
     "max-length": 10,
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "on-click": "kitty nmtui"
@@ -137,7 +138,7 @@
     "rotate": 0,
     "format-muted": "󰝟",
     "on-click": "pavucontrol -t 3",
-    "tooltip-format": "{icon} {desc} // {volume}%",
+    "tooltip": false,
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -155,7 +156,7 @@
     "format-source": "",
     "format-source-muted": "",
     "on-click": "pavucontrol -t 4",
-    "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+    "tooltip": false,
     "scroll-step": 5
   },
   "custom/media": {
@@ -166,7 +167,7 @@
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous",
     "max-length": 35,
-    "tooltip": true,
+    "tooltip": false,
     "escape": true,
     "interval": 1
   }
