@@ -24,7 +24,7 @@
     "format": "{}",
     "tooltip": false,
     "min-length": 5,
-    "max-length": 50,
+    "max-length": 60,
     "rewrite": {
       "": "<span foreground='#89b4fa'></span> Hyprland",
       "~": "  Terminal",
@@ -162,11 +162,9 @@
   "custom/media": {
     "format": "{}",
     "return-type": "json",
-    "exec": "player_status=$(playerctl status 2>/dev/null); if [[ $player_status == 'Playing' ]]; then playerctl metadata --format '{\"text\": \"  Playing: {{ title }}\"}' || echo '{\"text\": \"  Playing: No media found\"}'; elif [[ $player_status == 'Paused' ]]; then playerctl metadata --format '{\"text\": \"  Paused: {{ title }}\"}' || echo '{\"text\": \"  Paused: No media found\"}'; else echo '{\"text\": \"  No media found\"}'; fi",
+    "exec": "player_status=$(playerctl status 2>/dev/null); playerctl metadata --format '{\"text\": \"  {{ title }}\"}' || echo '{\"text\": \"  No media found\"}'",
     "on-click": "playerctl play-pause",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous",
-    "max-length": 35,
+    "max-length": 40,
     "tooltip": false,
     "escape": true,
     "interval": 1
