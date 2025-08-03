@@ -20,7 +20,8 @@ install_packages() {
   paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty thunar feh mpv \
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
-    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland btop blueman nwg-look
+    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio discord xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
+    bibata-cursor-theme-bin
 }
 
 create_symlink() {
@@ -40,6 +41,7 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/.config/rofi/" "$HOME/.config/rofi"
   create_symlink "$HOME/dotfiles/.config/waybar/" "$HOME/.config/waybar"
   create_symlink "$HOME/dotfiles/images/" "$HOME/images"
+  create_symlink "$HOME/dotfiles/.config/dunst/" "$HOME/.config/dunst"
 
   create_symlink "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
   create_symlink "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
@@ -56,6 +58,7 @@ change_gtk_theme() {
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
   gsettings set org.gnome.desktop.interface font-name "Inter Regular 11"
   gsettings set org.gnome.desktop.interface monospace-font-name "JetBrainsMono Nerd Font 11"
+  gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"
 }
 
 change_sddm_theme() {

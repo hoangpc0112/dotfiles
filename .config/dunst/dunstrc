@@ -1,0 +1,28 @@
+[global]
+monitor = 1
+frame_width = 1
+frame_color = "#b4befe"
+separator_color= frame
+highlight = "#74c7ec"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+corner_radius = 10
+offset = (25, 25)
+gap_size = 15
+format = "<b>%s</b>\n<i>%b</i>"
+font = Inter 12
+
+[urgency_low]
+foreground = "#a6e3a1"
+frame_color = "#a6e3a1"
+default_icon = "~/.config/dunst/icons/bell-badge-low.svg"
+
+[urgency_normal]
+foreground = "#74c7ec"
+frame_color = "#74c7ec"
+default_icon = "~/.config/dunst/icons/bell-badge.svg"
+
+[urgency_critical]
+foreground = "#f38ba8"
+frame_color = "#f38ba8"
+default_icon = "~/.config/dunst/icons/alert-decagram.svg"
