@@ -69,26 +69,17 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-
-# Safer default commands
-alias cp='cp -i'
-alias mv='mv -i'
 alias mkdir='mkdir -p'
-alias rm='rm -i'
-if command -v trash &>/dev/null; then alias rm='trash'; fi
-
-# Directory browsing, file and folder searching
 alias ls='ls -aFh --color=always'
-
-# Process/command helpers
-alias h='history | grep '
-alias p='ps aux | grep '
+alias h='history | grep'
+alias p='ps aux | grep'
+alias f='find . | grep'
 
 # Reboot/power
 alias rbt='sudo shutdown -r now'
 alias fbt='sudo shutdown -r -n now'
 alias pwo='sudo shutdown -h now'
-alias logout="hyprctl dispatch exit"
+alias logout='hyprctl dispatch exit'
 alias lockscr="hyprlock &"
 
 # Logs
@@ -105,7 +96,6 @@ alias 755='chmod -R 755'
 alias 777='chmod -R 777'
 alias brc='nvim ~/.bashrc'
 
-# Set the default editor
 if command -v nvim &>/dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
@@ -116,15 +106,14 @@ else
   export VISUAL=vim
 fi
 
-# Check if ripgrep is installed
 if command -v rg &>/dev/null; then
-  # Alias grep to rg if ripgrep is installed
-  alias grep='rg'
+  alias grep='rg --color=always'
 else
-  # Alias grep to /usr/bin/grep with GREP_OPTIONS if ripgrep is not installed
-  alias grep="/usr/bin/grep $GREP_OPTIONS"
+  alias grep='/usr/bin/grep --color=always'
 fi
-unset GREP_OPTIONS
+
+if command -v fd &>/dev/null; then alias f='fd --color=always'; fi
+if command -v trash &>/dev/null; then alias rm='trash'; fi
 
 #######################################################
 # FUNCTIONS
@@ -134,18 +123,27 @@ unset GREP_OPTIONS
 extract() {
   for archive in "$@"; do
     if [ -f "$archive" ]; then
-      case $archive in
-      *.tar.bz2) tar xvjf $archive ;;
-      *.tar.gz) tar xvzf $archive ;;
-      *.bz2) bunzip2 $archive ;;
-      *.rar) rar x $archive ;;
-      *.gz) gunzip $archive ;;
-      *.tar) tar xvf $archive ;;
-      *.tbz2) tar xvjf $archive ;;
-      *.tgz) tar xvzf $archive ;;
-      *.zip) unzip $archive ;;
-      *.Z) uncompress $archive ;;
-      *.7z) 7z x $archive ;;
+      case "$archive" in
+      # Tarball with various compressions
+      *.tar.bz2 | *.tbz2) tar xvjf "$archive" ;;
+      *.tar.gz | *.tgz) tar xvzf "$archive" ;;
+      *.tar.xz | *.txz) tar xvJf "$archive" ;;
+      *.tar.zst | *.tzst) tar --zstd -xvf "$archive" ;; # Requires tar 1.30+
+      *.tar) tar xvf "$archive" ;;
+
+      # Standalone compressed files
+      *.bz2) bunzip2 "$archive" ;;
+      *.gz) gunzip "$archive" ;;
+      *.xz) unxz "$archive" ;;
+      *.zst) unzstd "$archive" ;;
+      *.Z) uncompress "$archive" ;;
+
+      # Other formats
+      *.zip) unzip "$archive" ;;
+      *.rar) unrar x "$archive" ;;
+      *.7z) 7z x "$archive" ;;
+      *.deb) ar x "$archive" ;;
+
       *) echo "don't know how to extract '$archive'..." ;;
       esac
     else
