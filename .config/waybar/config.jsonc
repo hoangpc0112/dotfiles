@@ -27,9 +27,9 @@
     "max-length": 60,
     "rewrite": {
       "": "<span foreground='#89b4fa'></span> Hyprland",
-      "~": "  Terminal",
-      "zsh": "  Terminal",
-      "kitty": "  Terminal",
+      "~": " Terminal",
+      "zsh": " Terminal",
+      "kitty": " Terminal",
       "tmux(.*)": "<span foreground='#a6e3a1'></span> Tmux",
       "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span> Firefox",
       "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span> $1",
@@ -162,7 +162,7 @@
   "custom/media": {
     "format": "{}",
     "return-type": "json",
-    "exec": "player_status=$(playerctl status 2>/dev/null); playerctl metadata --format '{\"text\": \"  {{ title }}\"}' || echo '{\"text\": \"  No media found\"}'",
+    "exec": "player_status=$(playerctl status 2>/dev/null); playerctl metadata --format '{\"text\": \" {{ title }}\"}' || echo '{\"text\": \" No media found\"}'",
     "on-click": "playerctl play-pause",
     "max-length": 40,
     "tooltip": false,
