@@ -82,7 +82,7 @@
   "custom/date": {
     "format": "{}",
     "tooltip": false,
-    "exec": "date '+󰃭 %d/%m/%Y'",
+    "exec": "date '+󰃭 %A, %d/%m/%Y'",
     "interval": 3600
   },
   "cpu": {
