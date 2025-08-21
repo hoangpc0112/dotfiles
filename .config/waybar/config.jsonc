@@ -96,7 +96,7 @@
       "h": 60,
       "m": 30
     },
-    "interval": 30,
+    "interval": 10,
     "format": "󰾆 {percentage}%",
     "rotate": 0,
     "format-m": "󰾅 {used}GB",
@@ -114,6 +114,7 @@
     "format": "{icon} {capacity}%",
     "tooltip": false,
     "rotate": 0,
+    "interval": 10,
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
@@ -167,6 +168,6 @@
     "max-length": 40,
     "tooltip": false,
     "escape": true,
-    "interval": 1
+    "interval": 10
   }
 }
