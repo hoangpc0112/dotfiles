@@ -7,7 +7,6 @@
   "modules-left": [
     "hyprland/workspaces",
     "pulseaudio",
-    "pulseaudio#microphone",
     "custom/media"
   ],
   "modules-center": [
@@ -152,7 +151,8 @@
       "󰤥",
       "󰤨"
     ],
-    "on-click": "kitty nmtui"
+    "on-click": "kitty nmtui",
+    "interval": 10
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
