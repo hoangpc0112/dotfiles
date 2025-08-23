@@ -10,7 +10,9 @@
     "pulseaudio#microphone",
     "custom/media"
   ],
-  "modules-center": ["hyprland/window"],
+  "modules-center": [
+    "hyprland/window"
+  ],
   "modules-right": [
     "tray",
     "network",
@@ -117,7 +119,19 @@
     "interval": 10,
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
   },
   "tray": {
     "icon-size": 18,
@@ -131,7 +145,13 @@
     "format-ethernet": "󰌘",
     "tooltip": false,
     "max-length": 10,
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "on-click": "kitty nmtui"
   },
   "pulseaudio": {
@@ -148,7 +168,9 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [""]
+      "default": [
+        ""
+      ]
     }
   },
   "pulseaudio#microphone": {

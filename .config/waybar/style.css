@@ -70,7 +70,7 @@ button {
 #custom-date {
   padding: 0 10px;
   margin: 0 5px;
-  background-color: alpha(@crust, 0.75);
+  background-color: @crust;
   border-radius: 15px;
 }
 
