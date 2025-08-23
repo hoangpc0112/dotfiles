@@ -60,7 +60,6 @@ button {
 #tray,
 #cpu,
 #memory,
-#temperature,
 #network,
 #pulseaudio,
 #custom-media,
@@ -100,10 +99,6 @@ button {
 
 #memory {
   color: @green;
-}
-
-#temperature {
-  color: @yellow;
 }
 
 #battery {

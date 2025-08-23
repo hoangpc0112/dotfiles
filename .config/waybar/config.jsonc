@@ -72,7 +72,7 @@
     "tooltip": false,
     "disable-scroll": true,
     "persistent-workspaces": {
-      "*": 3
+      "*": 5
     }
   },
   "custom/time": {
@@ -142,7 +142,7 @@
   "network": {
     "format": "{ifname}",
     "format-wifi": "{icon} {essid}",
-    "format-ethernet": "󰌘",
+    "format-ethernet": "",
     "tooltip": false,
     "max-length": 10,
     "format-icons": [
@@ -172,15 +172,6 @@
         ""
       ]
     }
-  },
-  "pulseaudio#microphone": {
-    "format": "{format_source} {source_volume}%",
-    "rotate": 0,
-    "format-source": "",
-    "format-source-muted": "",
-    "on-click": "pavucontrol -t 4",
-    "tooltip": false,
-    "scroll-step": 5
   },
   "custom/media": {
     "format": "{}",

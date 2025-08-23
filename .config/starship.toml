@@ -59,7 +59,6 @@ status = "#e23140"
 
 [directory]
 format = '[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
-truncation_length = 2
 
 [git_branch]
 format = '[━━](fg:current_line)[](fg:green)[$symbol ](fg:primary bg:green)[](fg:green bg:box)[ $branch](fg:foreground bg:box)'
