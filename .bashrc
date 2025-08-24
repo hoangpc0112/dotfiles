@@ -168,6 +168,7 @@ ipme() {
 # Git helper
 alias gs='git status'
 alias gd='git diff -w'
+if command -v lazygit &>/dev/null; then alias lg='lazygit'; fi
 
 gpa() {
   git add .

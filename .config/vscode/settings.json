@@ -19,5 +19,13 @@
   "explorer.confirmDragAndDrop": false,
   "editor.minimap.enabled": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "editor.fontWeight": "500",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeight": "500",
+  "breadcrumbs.enabled": false,
+  "javascript.suggest.paths": false,
+  "typescript.suggest.paths": false,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
