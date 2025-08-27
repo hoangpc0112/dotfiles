@@ -23,3 +23,6 @@
 [user]
 	email = phamchinhhoang@gmail.com
 	name = hoangpc0112
+
+[credential]
+	helper = store
