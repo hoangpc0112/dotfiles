@@ -35,20 +35,20 @@ create_symlink() {
 }
 
 setup_dotfiles() {
-  create_symlink "$HOME/dotfiles/.config/fastfetch/" "$HOME/.config/fastfetch"
-  create_symlink "$HOME/dotfiles/.config/hypr/" "$HOME/.config/hypr"
-  create_symlink "$HOME/dotfiles/.config/kitty/" "$HOME/.config/kitty"
-  create_symlink "$HOME/dotfiles/.config/rofi/" "$HOME/.config/rofi"
-  create_symlink "$HOME/dotfiles/.config/waybar/" "$HOME/.config/waybar"
+  create_symlink "$HOME/dotfiles/config/fastfetch/" "$HOME/.config/fastfetch"
+  create_symlink "$HOME/dotfiles/config/hypr/" "$HOME/.config/hypr"
+  create_symlink "$HOME/dotfiles/config/kitty/" "$HOME/.config/kitty"
+  create_symlink "$HOME/dotfiles/config/rofi/" "$HOME/.config/rofi"
+  create_symlink "$HOME/dotfiles/config/waybar/" "$HOME/.config/waybar"
   create_symlink "$HOME/dotfiles/images/" "$HOME/images"
-  create_symlink "$HOME/dotfiles/.config/dunst/" "$HOME/.config/dunst"
+  create_symlink "$HOME/dotfiles/config/dunst/" "$HOME/.config/dunst"
 
-  create_symlink "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
-  create_symlink "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
-  create_symlink "$HOME/dotfiles/.config/starship.toml" "$HOME/.config/starship.toml"
+  create_symlink "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
+  create_symlink "$HOME/dotfiles/bashrc" "$HOME/.bashrc"
+  create_symlink "$HOME/dotfiles/config/starship.toml" "$HOME/.config/starship.toml"
   create_symlink "$HOME/dotfiles/images/wallpapers/aesthetic_1.jpg" "$HOME/.config/hypr/current_wallpaper"
-  create_symlink "$HOME/dotfiles/.config/nvim/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
-  create_symlink "$HOME/dotfiles/.config/hypr/hyprland-performance.conf" "$HOME/.config/hypr/hyprland.conf"
+  create_symlink "$HOME/dotfiles/config/nvim/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
+  create_symlink "$HOME/dotfiles/config/hypr/hyprland-performance.conf" "$HOME/.config/hypr/hyprland.conf"
 
   chmod +x $HOME/.config/hypr/scripts/*
 }
