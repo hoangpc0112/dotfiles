@@ -46,7 +46,7 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
   create_symlink "$HOME/dotfiles/bashrc" "$HOME/.bashrc"
   create_symlink "$HOME/dotfiles/config/starship.toml" "$HOME/.config/starship.toml"
-  create_symlink "$HOME/dotfiles/images/wallpapers/aesthetic_1.jpg" "$HOME/.config/hypr/current_wallpaper"
+  create_symlink "$HOME/dotfiles/images/wallpapers/midnight_symphony.png" "$HOME/.config/hypr/current_wallpaper"
   create_symlink "$HOME/dotfiles/config/nvim/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
   create_symlink "$HOME/dotfiles/config/hypr/hyprland-performance.conf" "$HOME/.config/hypr/hyprland.conf"
   create_symlink "$HOME/dotfiles/config/vscode/settings.json" "$HOME/.config/Code/User/settings.json"

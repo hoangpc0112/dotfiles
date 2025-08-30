@@ -1,7 +1,7 @@
 @theme "theme.rasi"
 
 configuration {
-  font: "Inter 11";
+  font: "JetBrainsMono Nerd Font 11";
 
   drun {
     display-name: "";
