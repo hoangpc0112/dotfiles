@@ -28,9 +28,9 @@
     "max-length": 60,
     "rewrite": {
       "": "<span foreground='#89b4fa'></span>",
-      "~": " ",
-      "zsh": " ",
-      "kitty": " ",
+      "~": "",
+      "zsh": "",
+      "kitty": "",
       "tmux(.*)": "<span foreground='#a6e3a1'></span> Tmux",
       "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span> Firefox",
       "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span> $1",
