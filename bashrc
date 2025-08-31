@@ -184,11 +184,35 @@ eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
 
-export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)' --style full --input-label ' Input ' --header-label ' File Type ' --preview '$HOME/.config/fzf/fzf-preview.sh {}' --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi' --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}' --bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"' --color 'preview-border:#9999cc,preview-label:#ccccff' --color 'list-border:#669966,list-label:#99cc99' --color 'input-border:#996666,input-label:#ffcccc' --color 'header-border:#6699cc,header-label:#99ccff'"
-export FZF_CTRL_R_OPTS="--layout reverse"
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --style full
+  --preview '$HOME/.config/fzf/fzf-preview.sh {}'
+  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
+  --color 'preview-border:#9999cc,preview-label:#ccccff'
+  --color 'list-border:#669966,list-label:#99cc99'
+  --color 'input-border:#996666'
+  "
+export FZF_CTRL_R_OPTS="
+  --reverse
+  --style full
+  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
+  --color 'list-border:#669966,list-label:#99cc99'
+  --color 'input-border:#996666'
+  "
+
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
-  --preview 'tree -C {}'"
+  --preview 'tree -C {}'
+  --style full
+  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
+  --color 'preview-border:#9999cc,preview-label:#ccccff'
+  --color 'list-border:#669966,list-label:#99cc99'
+  --color 'input-border:#996666'
+  "
 
 # Auto-ls on directory change
 cd() {
@@ -197,4 +221,9 @@ cd() {
 
 z() {
   __zoxide_z "$@" && ls
+}
+
+__fzf_cd__() {
+  local dir
+  dir=$(FZF_DEFAULT_COMMAND=${FZF_ALT_C_COMMAND:-} FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --walker=dir,follow,hidden --scheme=path" "${FZF_ALT_C_OPTS-} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd)) && printf 'z %q' "$(builtin unset CDPATH && builtin cd -- "$dir" && builtin pwd)"
 }
