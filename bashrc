@@ -180,18 +180,19 @@ gpa() {
 # SHELL ENHANCEMENTS
 #######################################################
 
-# Use starship, zoxide, fzf, thefuck
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
+
+export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)' --style full --input-label ' Input ' --header-label ' File Type ' --preview '$HOME/.config/fzf/fzf-preview.sh {}' --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi' --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}' --bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"' --color 'preview-border:#9999cc,preview-label:#ccccff' --color 'list-border:#669966,list-label:#99cc99' --color 'input-border:#996666,input-label:#ffcccc' --color 'header-border:#6699cc,header-label:#99ccff'"
+export FZF_CTRL_R_OPTS="--layout reverse"
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
 
 # Auto-ls on directory change
 cd() {
-  if [ -n "$1" ]; then
-    builtin cd "$@" && ls
-  else
-    builtin cd ~ && ls
-  fi
+  builtin cd "$@" && ls
 }
 
 z() {
