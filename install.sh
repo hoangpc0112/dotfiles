@@ -50,8 +50,10 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/config/nvim/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
   create_symlink "$HOME/dotfiles/config/hypr/hyprland-performance.conf" "$HOME/.config/hypr/hyprland.conf"
   create_symlink "$HOME/dotfiles/config/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
+  create_symlink "$HOME/dotfiles/fzf-preview.sh" "$HOME/fzf-preview.sh"
 
   chmod +x $HOME/.config/hypr/scripts/*
+  chmod +x $HOME/fzf-preview.sh
 }
 
 change_gtk_theme() {
