@@ -1,7 +1,14 @@
 #!/bin/bash
 
+check_privileges() {
+  if [[ $EUID -ne 0 ]]; then
+    log_error "This script requires root privileges. Please run with sudo."
+    exit 1
+  fi
+}
+
 install_paru() {
-  sudo pacman -S --noconfirm --needed base-devel git
+  pacman -S --noconfirm --needed base-devel git
 
   if command -v paru &>/dev/null; then
     echo "paru is already installed. Skipping ..."
@@ -21,7 +28,8 @@ install_packages() {
     unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
     breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio vesktop-bin xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
-    bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin postman-bin visual-studio-code-bin localsend-bin gammastep tree
+    bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin postman-bin visual-studio-code-bin localsend-bin gammastep tree \
+    brightnessctl
 }
 
 create_symlink() {
@@ -67,18 +75,18 @@ change_gtk_theme() {
 
 change_sddm_theme() {
   git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
-  sudo cp -r $HOME/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
+  cp -r $HOME/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
   echo "[Theme]
-  Current=minesddm" | sudo tee /etc/sddm.conf
+  Current=minesddm" | tee /etc/sddm.conf
   cd "$HOME"
   rm -rf "$HOME/sddm-theme-minesddm"
 }
 
 start_service() {
-  sudo systemctl enable sddm.service
-  sudo systemctl enable bluetooth.service
-  sudo systemctl enable ufw.service
-  sudo ufw enable
+  systemctl enable sddm.service
+  systemctl enable bluetooth.service
+  systemctl enable ufw.service
+  ufw enable
 }
 
 install_lazyvim() {
@@ -86,6 +94,16 @@ install_lazyvim() {
   rm -rf $HOME/.config/nvim/.git
 }
 
+change_grub_theme() {
+  git clone https://github.com/Lxtharia/minegrub-world-sel-theme.git "$HOME/minegrub-world-sel-theme"
+  cp -ruv $HOME/minegrub-world-sel-theme/minegrub-world-selection /boot/grub/themes/
+  echo 'GRUB_TERMINAL_OUTPUT=gfxterm' | tee -a /etc/default/grub
+  echo 'GRUB_THEME=/boot/grub/themes/minegrub-world-selection/theme.txt' | tee -a /etc/default/grub
+  grub-mkconfig -o /boot/grub/grub.cfg
+  rm -rf $HOME/minegrub-world-sel-theme
+}
+
+check_privileges
 install_paru
 install_packages
 start_service
@@ -93,5 +111,6 @@ install_lazyvim
 setup_dotfiles
 change_gtk_theme
 change_sddm_theme
+change_grub_theme
 
-echo "Installation complete! Please reboot or log out/log in for changes to take effect."
+echo "Installation complete! Please reboot for changes to take effect."

@@ -227,3 +227,6 @@ __fzf_cd__() {
   local dir
   dir=$(FZF_DEFAULT_COMMAND=${FZF_ALT_C_COMMAND:-} FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --walker=dir,follow,hidden --scheme=path" "${FZF_ALT_C_OPTS-} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd)) && printf 'z %q' "$(builtin unset CDPATH && builtin cd -- "$dir" && builtin pwd)"
 }
+
+# Change Alt+C => Ctrl+F
+bind "$(bind -s | grep '^"\\ec"' | sed 's/\\ec/\\C-f/')"

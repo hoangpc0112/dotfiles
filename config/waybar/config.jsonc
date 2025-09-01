@@ -6,6 +6,7 @@
   "height": 30,
   "modules-left": [
     "hyprland/workspaces",
+    "backlight",
     "pulseaudio",
     "custom/media"
   ],
@@ -73,6 +74,10 @@
     "persistent-workspaces": {
       "*": 5
     }
+  },
+  "backlight": {
+    "format": "󰖨 {percent}%",
+    "tooltip": false
   },
   "custom/time": {
     "format": "{}",

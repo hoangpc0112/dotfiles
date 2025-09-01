@@ -65,6 +65,7 @@ button {
 #custom-media,
 #window,
 #workspaces,
+#backlight,
 #custom-time,
 #custom-date {
   padding: 0 10px;
@@ -78,6 +79,10 @@ button {
 }
 
 #pulseaudio {
+  color: @sapphire;
+}
+
+#backlight {
   color: @lavender;
 }
 
