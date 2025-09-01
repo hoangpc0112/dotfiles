@@ -10,7 +10,7 @@ These dotfiles combine configurations from many sources, so they're not 100% my 
 | Terminal 🖥️        | [Kitty](https://github.com/kovidgoyal/kitty)                                               |
 | Shell 🐚           | [Bash](https://github.com/bminor/bash)                                                     |
 | File Manager 📁    | [Thunar](https://github.com/xfce-mirror/thunar)                                            |
-| Editor 📝          | [Neovim](https://github.com/neovim/neovim) / [LazyVim](https://github.com/LazyVim/LazyVim) |
+| Editor 📝          | [Neovim](https://github.com/neovim/neovim) / [LazyVim](https://github.com/LazyVim/LazyVim) / [VSCode](https://github.com/microsoft/vscode) |
 | Browser 🌐         | [Zen Browser](https://github.com/zen-browser/desktop)                                      |
 | Bar 📊             | [Waybar](https://github.com/Alexays/Waybar)                                                |
 | Launcher 🚀        | [Rofi](https://github.com/davatorium/rofi)                                                 |

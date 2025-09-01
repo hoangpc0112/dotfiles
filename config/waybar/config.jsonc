@@ -89,7 +89,7 @@
     "format": "{}",
     "tooltip": false,
     "exec": "date '+󰃭 %A, %d/%m/%Y'",
-    "interval": 3600
+    "interval": 60
   },
   "cpu": {
     "interval": 10,
