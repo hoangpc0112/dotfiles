@@ -60,8 +60,8 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/config/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
   create_symlink "$HOME/dotfiles/fzf-preview.sh" "$HOME/fzf-preview.sh"
 
-  chmod +x $HOME/.config/hypr/scripts/*
-  chmod +x $HOME/fzf-preview.sh
+  chmod +x "$HOME/.config/hypr/scripts/*"
+  chmod +x "$HOME/fzf-preview.sh"
 }
 
 change_gtk_theme() {
@@ -74,10 +74,10 @@ change_gtk_theme() {
 }
 
 change_sddm_theme() {
-  git clone https://github.com/Davi-S/sddm-theme-minesddm.git $HOME/sddm-theme-minesddm
-  cp -r $HOME/sddm-theme-minesddm/minesddm /usr/share/sddm/themes/
+  git clone https://github.com/Davi-S/sddm-theme-minesddm.git "$HOME/sddm-theme-minesddm"
+  cp -r "$HOME/sddm-theme-minesddm/minesddm" "/usr/share/sddm/themes/"
   echo "[Theme]
-  Current=minesddm" | tee /etc/sddm.conf
+  Current=minesddm" | tee "/etc/sddm.conf"
   cd "$HOME"
   rm -rf "$HOME/sddm-theme-minesddm"
 }
@@ -90,27 +90,86 @@ start_service() {
 }
 
 install_lazyvim() {
-  git clone https://github.com/LazyVim/starter $HOME/.config/nvim
-  rm -rf $HOME/.config/nvim/.git
+  git clone https://github.com/LazyVim/starter "$HOME/.config/nvim"
+  rm -rf "$HOME/.config/nvim/.git"
 }
 
 change_grub_theme() {
   git clone https://github.com/Lxtharia/minegrub-world-sel-theme.git "$HOME/minegrub-world-sel-theme"
-  cp -ruv $HOME/minegrub-world-sel-theme/minegrub-world-selection /boot/grub/themes/
-  echo 'GRUB_TERMINAL_OUTPUT=gfxterm' | tee -a /etc/default/grub
-  echo 'GRUB_THEME=/boot/grub/themes/minegrub-world-selection/theme.txt' | tee -a /etc/default/grub
+  cp -ruv "$HOME/minegrub-world-sel-theme/minegrub-world-selection" "/boot/grub/themes/"
+  echo 'GRUB_TERMINAL_OUTPUT=gfxterm' | tee -a "/etc/default/grub"
+  echo 'GRUB_THEME=/boot/grub/themes/minegrub-world-selection/theme.txt' | tee -a "/etc/default/grub"
   grub-mkconfig -o /boot/grub/grub.cfg
-  rm -rf $HOME/minegrub-world-sel-theme
+  rm -rf "$HOME/minegrub-world-sel-theme"
 }
 
-check_privileges
-install_paru
-install_packages
-start_service
-install_lazyvim
-setup_dotfiles
-change_gtk_theme
-change_sddm_theme
-change_grub_theme
+main_menu() {
+  check_privileges
 
-echo "Installation complete! Please reboot for changes to take effect."
+  while true; do
+    echo "Please choose an option:"
+    echo "-------------------------"
+    echo "1) Install paru"
+    echo "2) Install packages"
+    echo "3) Start services (sddm, bluetooth, ufw)"
+    echo "4) Install LazyVim"
+    echo "5) Set up dotfiles"
+    echo "6) Change GTK theme"
+    echo "7) Change SDDM theme"
+    echo "8) Change Grub theme"
+    echo "9) Run All (1 through 8)"
+    echo "0) Exit"
+    echo "-------------------------"
+    read -p "Enter your choice: " choice
+
+    case $choice in
+    1)
+      install_paru
+      ;;
+    2)
+      install_packages
+      ;;
+    3)
+      start_service
+      ;;
+    4)
+      install_lazyvim
+      ;;
+    5)
+      setup_dotfiles
+      ;;
+    6)
+      change_gtk_theme
+      ;;
+    7)
+      change_sddm_theme
+      ;;
+    8)
+      change_grub_theme
+      ;;
+    9)
+      echo "Running all options..."
+      install_paru
+      install_packages
+      start_service
+      install_lazyvim
+      setup_dotfiles
+      change_gtk_theme
+      change_sddm_theme
+      change_grub_theme
+      echo "All tasks complete!"
+      exit 0
+      ;;
+    0)
+      echo "Exiting script. Goodbye!"
+      exit 0
+      ;;
+    *)
+      echo "Invalid option. Please try again."
+      ;;
+    esac
+    echo " "
+  done
+}
+
+main_menu
