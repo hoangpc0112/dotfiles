@@ -112,6 +112,7 @@ else
   alias grep='/usr/bin/grep --color=always'
 fi
 
+if command -v lsd &>/dev/null; then alias ls='lsd -aFh --color=always'; fi
 if command -v fd &>/dev/null; then alias f='fd --color=always'; fi
 if command -v trash &>/dev/null; then alias rm='trash'; fi
 

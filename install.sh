@@ -2,7 +2,7 @@
 
 check_privileges() {
   if [[ $EUID -ne 0 ]]; then
-    log_error "This script requires root privileges. Please run with sudo."
+    log_error "This script requires root privileges. Please run with sudo -E."
     exit 1
   fi
 }
@@ -29,7 +29,7 @@ install_packages() {
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
     breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio vesktop-bin xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
     bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin postman-bin visual-studio-code-bin localsend-bin gammastep tree \
-    brightnessctl yazi
+    brightnessctl yazi lsd tldr trash-cli
   ya pkg add kalidyasin/yazi-flavors:tokyonight-night
 }
 

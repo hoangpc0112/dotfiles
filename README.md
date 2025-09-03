@@ -6,16 +6,16 @@ These dotfiles combine configurations from many sources, so they're not 100% my 
 
 | Component          | Program                                                                                    |
 | ------------------ | ------------------------------------------------------------------------------------------ |
-| Windows Manager 🪟 | [Hyprland](https://github.com/hyprwm/Hyprland)                                             |
-| Terminal 🖥️        | [Kitty](https://github.com/kovidgoyal/kitty)                                               |
-| Shell 🐚           | [Bash](https://github.com/bminor/bash)                                                     |
-| File Manager 📁    | [Thunar](https://github.com/xfce-mirror/thunar)                                            |
-| Editor 📝          | [Neovim](https://github.com/neovim/neovim) / [LazyVim](https://github.com/LazyVim/LazyVim) / [VSCode](https://github.com/microsoft/vscode) |
-| Browser 🌐         | [Zen Browser](https://github.com/zen-browser/desktop)                                      |
-| Bar 📊             | [Waybar](https://github.com/Alexays/Waybar)                                                |
-| Launcher 🚀        | [Rofi](https://github.com/davatorium/rofi)                                                 |
-| Lockscreen 🔒      | [Hyprlock](https://github.com/hyprwm/hyprlock)                                             |
-| Login Menu 🚪      | [Sddm](https://github.com/sddm/sddm)                                                       |
+| Windows Manager 🪟 | [hyprland](https://github.com/hyprwm/Hyprland)                                             |
+| Terminal 🖥️        | [kitty](https://github.com/kovidgoyal/kitty)                                               |
+| Shell 🐚           | [bash](https://github.com/bminor/bash)                                                     |
+| File Manager 📁    | [yazi](https://github.com/sxyazi/yazi)                                            |
+| Editor 📝          | [neovim](https://github.com/neovim/neovim) / [lazyvim](https://github.com/LazyVim/LazyVim) / [vscode](https://github.com/microsoft/vscode) |
+| Browser 🌐         | [zen browser](https://github.com/zen-browser/desktop)                                      |
+| Bar 📊             | [waybar](https://github.com/Alexays/Waybar)                                                |
+| Launcher 🚀        | [rofi](https://github.com/davatorium/rofi)                                                 |
+| Lockscreen 🔒      | [hyprlock](https://github.com/hyprwm/hyprlock)                                             |
+| Login Menu 🚪      | [sddm](https://github.com/sddm/sddm)                                                       |
 
 # Previews
 
