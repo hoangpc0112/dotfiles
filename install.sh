@@ -1,14 +1,7 @@
 #!/bin/bash
 
-check_privileges() {
-  if [[ $EUID -ne 0 ]]; then
-    log_error "This script requires root privileges. Please run with sudo -E."
-    exit 1
-  fi
-}
-
 install_paru() {
-  pacman -S --noconfirm --needed base-devel git
+  sudo pacman -S --noconfirm --needed base-devel git
 
   if command -v paru &>/dev/null; then
     echo "paru is already installed. Skipping ..."
@@ -31,7 +24,6 @@ install_packages() {
     bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin postman-bin visual-studio-code-bin localsend-bin gammastep tree \
     brightnessctl yazi lsd tldr trash-cli zsh
   ya pkg add kalidyasin/yazi-flavors:tokyonight-night
-
 }
 
 create_symlink() {
@@ -85,18 +77,18 @@ change_gtk_theme() {
 
 change_sddm_theme() {
   git clone https://github.com/Davi-S/sddm-theme-minesddm.git "$HOME/sddm-theme-minesddm"
-  cp -r "$HOME/sddm-theme-minesddm/minesddm" "/usr/share/sddm/themes/"
+  sudo cp -r "$HOME/sddm-theme-minesddm/minesddm" "/usr/share/sddm/themes/"
   echo "[Theme]
-  Current=minesddm" | tee "/etc/sddm.conf"
+  Current=minesddm" | sudo tee "/etc/sddm.conf"
   cd "$HOME"
   rm -rf "$HOME/sddm-theme-minesddm"
 }
 
 start_service() {
-  systemctl enable sddm.service
-  systemctl enable bluetooth.service
-  systemctl enable ufw.service
-  ufw enable
+  sudo systemctl enable sddm.service
+  sudo systemctl enable bluetooth.service
+  sudo systemctl enable ufw.service
+  sudo ufw enable
 }
 
 install_lazyvim() {
@@ -106,85 +98,25 @@ install_lazyvim() {
 
 change_grub_theme() {
   git clone https://github.com/Lxtharia/minegrub-world-sel-theme.git "$HOME/minegrub-world-sel-theme"
-  cp -ruv "$HOME/minegrub-world-sel-theme/minegrub-world-selection" "/boot/grub/themes/"
-  echo 'GRUB_TERMINAL_OUTPUT=gfxterm' | tee -a "/etc/default/grub"
-  echo 'GRUB_THEME=/boot/grub/themes/minegrub-world-selection/theme.txt' | tee -a "/etc/default/grub"
-  grub-mkconfig -o /boot/grub/grub.cfg
+  sudo cp -ru "$HOME/minegrub-world-sel-theme/minegrub-world-selection" "/boot/grub/themes/"
+  echo 'GRUB_TERMINAL_OUTPUT=gfxterm' | sudo tee -a "/etc/default/grub"
+  echo 'GRUB_THEME=/boot/grub/themes/minegrub-world-selection/theme.txt' | sudo tee -a "/etc/default/grub"
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
   rm -rf "$HOME/minegrub-world-sel-theme"
 }
 
 main_menu() {
-  check_privileges
-
-  while true; do
-    echo "Please choose an option:"
-    echo "-------------------------"
-    echo "1) Install paru"
-    echo "2) Install packages"
-    echo "3) Start services (sddm, bluetooth, ufw)"
-    echo "4) Install LazyVim"
-    echo "5) Set up dotfiles"
-    echo "6) Setup Zsh"
-    echo "7) Change GTK theme"
-    echo "8) Change SDDM theme"
-    echo "9) Change Grub theme"
-    echo "10) Run All"
-    echo "0) Exit"
-    echo "-------------------------"
-    read -p "Enter your choice: " choice
-
-    case $choice in
-    1)
-      install_paru
-      ;;
-    2)
-      install_packages
-      ;;
-    3)
-      start_service
-      ;;
-    4)
-      install_lazyvim
-      ;;
-    5)
-      setup_dotfiles
-      ;;
-    6)
-      setup_zsh
-      ;;
-    7)
-      change_gtk_theme
-      ;;
-    8)
-      change_sddm_theme
-      ;;
-    9)
-      change_grub_theme
-      ;;
-    10)
-      echo "Running all options..."
-      install_paru
-      install_packages
-      start_service
-      install_lazyvim
-      setup_dotfiles
-      setup_zsh
-      change_gtk_theme
-      change_sddm_theme
-      change_grub_theme
-      echo "All tasks complete!"
-      exit 0
-      ;;
-    0)
-      echo "Exiting script. Goodbye!"
-      exit 0
-      ;;
-    *)
-      echo "Invalid option. Please try again."
-      ;;
-    esac
-    echo " "
-  done
+  sudo echo "Starting installation..."
+  install_paru
+  install_packages
+  start_service
+  install_lazyvim
+  setup_dotfiles
+  setup_zsh
+  change_gtk_theme
+  change_sddm_theme
+  change_grub_theme
+  echo "All tasks complete!"
 }
 
 main_menu
