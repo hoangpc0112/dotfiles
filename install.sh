@@ -29,8 +29,9 @@ install_packages() {
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
     breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio vesktop-bin xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
     bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin postman-bin visual-studio-code-bin localsend-bin gammastep tree \
-    brightnessctl yazi lsd tldr trash-cli
+    brightnessctl yazi lsd tldr trash-cli zsh
   ya pkg add kalidyasin/yazi-flavors:tokyonight-night
+
 }
 
 create_symlink() {
@@ -53,7 +54,6 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/config/dunst/" "$HOME/.config/dunst"
 
   create_symlink "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
-  create_symlink "$HOME/dotfiles/bashrc" "$HOME/.bashrc"
   create_symlink "$HOME/dotfiles/config/starship.toml" "$HOME/.config/starship.toml"
   create_symlink "$HOME/dotfiles/images/wallpapers/midnight_symphony.png" "$HOME/.config/hypr/current_wallpaper"
   create_symlink "$HOME/dotfiles/config/nvim/colorscheme.lua" "$HOME/.config/nvim/lua/plugins/colorscheme.lua"
@@ -64,6 +64,14 @@ setup_dotfiles() {
 
   chmod +x "$HOME/.config/hypr/scripts/*"
   chmod +x "$HOME/fzf-preview.sh"
+}
+
+setup_zsh() {
+  mkdir -p "$HOME/.config/zsh"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.config/zsh/zsh-syntax-highlighting"
+  git clone https://github.com/Aloxaf/fzf-tab "$HOME/.config/zsh/fzf-tab"
+  create_symlink "$HOME/dotfiles/zshrc" "$HOME/.zshrc"
+  create_symlink "$HOME/dotfiles/config/zsh/zsh-syntax-highlight-tokyonight.zsh" "$HOME/.config/zsh/zsh-syntax-highlight-tokyonight.zsh"
 }
 
 change_gtk_theme() {
@@ -116,10 +124,11 @@ main_menu() {
     echo "3) Start services (sddm, bluetooth, ufw)"
     echo "4) Install LazyVim"
     echo "5) Set up dotfiles"
-    echo "6) Change GTK theme"
-    echo "7) Change SDDM theme"
-    echo "8) Change Grub theme"
-    echo "9) Run All (1 through 8)"
+    echo "6) Setup Zsh"
+    echo "7) Change GTK theme"
+    echo "8) Change SDDM theme"
+    echo "9) Change Grub theme"
+    echo "10) Run All"
     echo "0) Exit"
     echo "-------------------------"
     read -p "Enter your choice: " choice
@@ -141,21 +150,25 @@ main_menu() {
       setup_dotfiles
       ;;
     6)
-      change_gtk_theme
+      setup_zsh
       ;;
     7)
-      change_sddm_theme
+      change_gtk_theme
       ;;
     8)
-      change_grub_theme
+      change_sddm_theme
       ;;
     9)
+      change_grub_theme
+      ;;
+    10)
       echo "Running all options..."
       install_paru
       install_packages
       start_service
       install_lazyvim
       setup_dotfiles
+      setup_zsh
       change_gtk_theme
       change_sddm_theme
       change_grub_theme
