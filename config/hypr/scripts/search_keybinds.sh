@@ -5,6 +5,7 @@ echo " + K:Search all Keybinds
  + E:Open file manager
  + B:Open web browser
  + F:Toggle floating mode
+ + SHIFT + F:Toggle fullscreen mode
  + D:Open application launcher
  + V:Clipboard manager
  + PRINTSCREEN:Take screenshot (fullscreen)
