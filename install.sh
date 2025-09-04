@@ -54,7 +54,7 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/fzf-preview.sh" "$HOME/fzf-preview.sh"
   create_symlink "$HOME/dotfiles/config/yazi/theme.toml" "$HOME/.config/yazi/theme.toml"
 
-  chmod +x "$HOME/.config/hypr/scripts/*"
+  chmod +x $HOME/.config/hypr/scripts/*
   chmod +x "$HOME/fzf-preview.sh"
 }
 
