@@ -21,10 +21,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias mkdir='mkdir -p'
-alias ls='ls --color=always'
 alias h='history | grep'
 alias p='ps aux | grep'
-alias f='find . | grep'
 
 alias rbt='sudo shutdown -r now'
 alias pwo='sudo shutdown -h now'
@@ -43,49 +41,53 @@ alias gd='git diff -w'
 
 # Editor
 if command -v nvim &>/dev/null; then
-    export EDITOR='nvim'
-    export VISUAL='nvim'
-    alias nv='nvim'
-    alias snv='sudo nvim'
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+  alias nv='nvim'
+  alias snv='sudo nvim'
 elif command -v vim &>/dev/null; then
-    export EDITOR='vim'
-    export VISUAL='vim'
-    alias vi='vim'
-    alias svi='sudo vim'
+  export EDITOR='vim'
+  export VISUAL='vim'
+  alias vi='vim'
+  alias svi='sudo vim'
 fi
 
 # Grep alternative
 if command -v rg &>/dev/null; then
-    alias grep='rg --color=always'
+  alias grep='rg --color=always'
 else
-    alias grep='/usr/bin/grep --color=always'
+  alias grep='/usr/bin/grep --color=always'
 fi
 
 # Find alternative
 if command -v fd &>/dev/null; then
-    alias f='fd --color=always'
+  alias f='fd --color=always'
+else
+  alias f='find . | grep'
 fi
 
 # rm alternative
 if command -v trash &>/dev/null; then
-    alias rm='trash'
+  alias rm='trash'
 fi
 
 # ls alternative
 if command -v lsd &>/dev/null; then
-    alias ls='lsd -aF --color=always --group-dirs first'
-    alias ll='lsd --all --color=always --header --long --group-dirs first'
-    alias tree='lsd --tree --color=always'
+  alias ls='lsd -aF --color=always --group-dirs first'
+  alias ll='lsd --all --color=always --header --long --group-dirs first'
+  alias tree='lsd --tree --color=always'
+else
+  alias ls='ls --color=always'
 fi
 
 # cat alternative
 if command -v bat &>/dev/null; then
-    alias cat='bat'
+  alias cat='bat'
 fi
 
 # git alternative
 if command -v lazygit &>/dev/null; then
-    alias lg='lazygit'
+  alias lg='lazygit'
 fi
 
 # fastfetch on startup
@@ -185,25 +187,19 @@ export FZF_CTRL_R_OPTS="
   --reverse
 "
 
-export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview '$HOME/fzf-preview.sh {}'
-  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
-"
-
-# Auto-ls on directory change
-cd() {
-  builtin cd "$@" && ls
-}
-
-z() {
-  __zoxide_z "$@" && ls
-}
-
-__fzf_cd__() {
-  local dir
-  dir=$(FZF_DEFAULT_COMMAND=${FZF_ALT_C_COMMAND:-} FZF_DEFAULT_OPTS=$(__fzf_defaults "--reverse --walker=dir,follow,hidden --scheme=path" "${FZF_ALT_C_OPTS-} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd)) && printf 'z %q' "$(builtin unset CDPATH && builtin cd -- "$dir" && builtin pwd)"
-}
+# cd alternative and auto ls on directory change
+if command -v __zoxide_z &>/dev/null; then
+  cd() {
+     __zoxide_z "$@" && ls
+  }
+  z() {
+     __zoxide_z "$@" && ls
+  }
+else
+  cd() {
+    builtin cd "$@" && ls
+  }
+fi
 
 #######################################################
 # Keybinds
@@ -222,11 +218,16 @@ source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
 source $HOME/.config/zsh/zsh-syntax-highlight-tokyonight.zsh
 
+export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:ow=01;36:tw=01;33:st=01;34'
+
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
+
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
