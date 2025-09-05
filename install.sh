@@ -22,7 +22,7 @@ install_packages() {
     zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
     breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio vesktop-bin xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
     bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin postman-bin visual-studio-code-bin localsend-bin gammastep tree \
-    brightnessctl yazi lsd tldr trash-cli zsh
+    brightnessctl yazi lsd tldr trash-cli zsh auto-cpufreq
   ya pkg add kalidyasin/yazi-flavors:tokyonight-night
 }
 
@@ -54,6 +54,7 @@ setup_dotfiles() {
   create_symlink "$HOME/dotfiles/fzf-preview.sh" "$HOME/fzf-preview.sh"
   create_symlink "$HOME/dotfiles/config/yazi/theme.toml" "$HOME/.config/yazi/theme.toml"
   create_symlink "$HOME/dotfiles/config/yazi/yazi.toml" "$HOME/.config/yazi/yazi.toml"
+  create_symlink "$HOME/dotfiles/config/yazi/keymap.toml" ".config/yazi/keymap.toml"
 
   chmod +x $HOME/.config/hypr/scripts/*
   chmod +x "$HOME/fzf-preview.sh"
@@ -90,11 +91,13 @@ start_service() {
   sudo systemctl enable bluetooth.service
   sudo systemctl enable ufw.service
   sudo ufw enable
+  sudo auto-cpufreq --install
 }
 
 install_lazyvim() {
   git clone https://github.com/LazyVim/starter "$HOME/.config/nvim"
   rm -rf "$HOME/.config/nvim/.git"
+  echo "vim.opt.wrap = true" >>$HOME/.config/nvim/lua/config/options.lua
 }
 
 change_grub_theme() {
@@ -117,6 +120,7 @@ main_menu() {
   change_gtk_theme
   change_sddm_theme
   change_grub_theme
+  chsh -s $(which zsh)
   echo "All tasks complete!"
 }
 

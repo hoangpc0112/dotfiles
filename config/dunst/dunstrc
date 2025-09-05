@@ -15,14 +15,14 @@ font = Inter 12
 [urgency_low]
 foreground = "#a6e3a1"
 frame_color = "#a6e3a1"
-default_icon = "~/.config/dunst/icons/bell-badge-low.svg"
+default_icon = "$HOME/.config/dunst/icons/bell-badge-low.svg"
 
 [urgency_normal]
 foreground = "#74c7ec"
 frame_color = "#74c7ec"
-default_icon = "~/.config/dunst/icons/bell-badge.svg"
+default_icon = "$HOME/.config/dunst/icons/bell-badge.svg"
 
 [urgency_critical]
 foreground = "#f38ba8"
 frame_color = "#f38ba8"
-default_icon = "~/.config/dunst/icons/alert-decagram.svg"
+default_icon = "$HOME/.config/dunst/icons/alert-decagram.svg"
