@@ -167,42 +167,28 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 
-export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,target
-  --style full
-  --preview '$HOME/fzf-preview.sh {}'
-  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
-  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
-  --color 'preview-border:#9999cc,preview-label:#ccccff'
-  --color 'list-border:#669966,list-label:#99cc99'
-  --color 'input-border:#996666'
-"
-
-export FZF_CTRL_R_OPTS="
-  --reverse
-  --style full
-  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
-  --color 'list-border:#669966,list-label:#99cc99'
-  --color 'input-border:#996666'
-"
-
-export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
-  --preview '$HOME/fzf-preview.sh {}'
-  --style full
-  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
-  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
-  --color 'preview-border:#9999cc,preview-label:#ccccff'
-  --color 'list-border:#669966,list-label:#99cc99'
-  --color 'input-border:#996666'
-"
-
 export FZF_DEFAULT_OPTS="
   --style full
   --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
   --color 'preview-border:#9999cc,preview-label:#ccccff'
   --color 'list-border:#669966,list-label:#99cc99'
   --color 'input-border:#996666'
+"
+
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview '$HOME/fzf-preview.sh {}'
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
+"
+
+export FZF_CTRL_R_OPTS="
+  --reverse
+"
+
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview '$HOME/fzf-preview.sh {}'
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
 "
 
 # Auto-ls on directory change
