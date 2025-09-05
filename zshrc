@@ -176,14 +176,15 @@ export FZF_CTRL_T_OPTS="
   --color 'preview-border:#9999cc,preview-label:#ccccff'
   --color 'list-border:#669966,list-label:#99cc99'
   --color 'input-border:#996666'
-  "
+"
+
 export FZF_CTRL_R_OPTS="
   --reverse
   --style full
   --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
   --color 'list-border:#669966,list-label:#99cc99'
   --color 'input-border:#996666'
-  "
+"
 
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
@@ -194,7 +195,15 @@ export FZF_ALT_C_OPTS="
   --color 'preview-border:#9999cc,preview-label:#ccccff'
   --color 'list-border:#669966,list-label:#99cc99'
   --color 'input-border:#996666'
-  "
+"
+
+export FZF_DEFAULT_OPTS="
+  --style full
+  --bind 'result:transform-list-label:if [[ -z \$FZF_QUERY ]]; then echo \" \$FZF_MATCH_COUNT items \"; else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"; fi'
+  --color 'preview-border:#9999cc,preview-label:#ccccff'
+  --color 'list-border:#669966,list-label:#99cc99'
+  --color 'input-border:#996666'
+"
 
 # Auto-ls on directory change
 cd() {
@@ -211,6 +220,13 @@ __fzf_cd__() {
 }
 
 #######################################################
+# Keybinds
+#######################################################
+
+bindkey '\e[1;5D' backward-word
+bindkey '\e[1;5C' forward-word
+
+#######################################################
 # ZSH plugin
 #######################################################
 
@@ -219,3 +235,21 @@ autoload -U compinit; compinit
 source $HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
 source $HOME/.config/zsh/zsh-syntax-highlight-tokyonight.zsh
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
+# custom fzf flags
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+
+# To make fzf-tab follow FZF_DEFAULT_OPTS.
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
