@@ -240,3 +240,6 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
+
+# disable case-sentitive for tab auto-completions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

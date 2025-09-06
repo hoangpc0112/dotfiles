@@ -58,6 +58,7 @@ setup_dotfiles() {
 
   chmod +x $HOME/.config/hypr/scripts/*
   chmod +x "$HOME/fzf-preview.sh"
+  chmod +x "$HOME/.config/dunst/play_noti_audio.sh"
 }
 
 setup_zsh() {
