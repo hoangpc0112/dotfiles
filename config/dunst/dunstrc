@@ -2,7 +2,7 @@
 monitor = 1
 frame_width = 1
 frame_color = "#b4befe"
-separator_color= frame
+separator_color = frame
 highlight = "#74c7ec"
 background = "#1e1e2e"
 foreground = "#cdd6f4"
@@ -11,6 +11,9 @@ offset = (25, 25)
 gap_size = 15
 format = "<b>%s</b>\n<i>%b</i>"
 font = Inter 12
+script = "$HOME/.config/dunst/play_noti_audio.sh"
+enable_recursive_icon_lookup = true
+icon_theme = "breeze-dark, Papirus-Dark"
 
 [urgency_low]
 foreground = "#a6e3a1"
@@ -26,7 +29,3 @@ default_icon = "$HOME/.config/dunst/icons/bell-badge.svg"
 foreground = "#f38ba8"
 frame_color = "#f38ba8"
 default_icon = "$HOME/.config/dunst/icons/alert-decagram.svg"
-
-[play_sound]
-  summary = "*"
-  script = "$HOME/.config/dunst/play_noti_audio.sh"
