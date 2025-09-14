@@ -15,7 +15,7 @@ setopt promptsubst         # enable command substitution in prompt
 # Aliases
 #######################################################
 
-alias cls='clear'
+alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
