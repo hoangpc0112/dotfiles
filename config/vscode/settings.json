@@ -7,7 +7,6 @@
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
   "chat.commandCenter.enabled": false,
-  "workbench.activityBar.location": "hidden",
   "workbench.statusBar.visible": false,
   "files.autoSave": "onFocusChange",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -27,5 +26,18 @@
   "breadcrumbs.enabled": false,
   "javascript.suggest.paths": false,
   "typescript.suggest.paths": false,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "terminal.integrated.suggest.enabled": true,
+  "explorer.compactFolders": false,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "text": "Subject should be 50 characters or less" },
+    { "text": "Use the imperative mood in the subject line" },
+    { "text": "Provide a detailed description" },
+    {
+      "text": "Use bullet points for detailed changes of each file in body"
+    }
+  ]
 }
