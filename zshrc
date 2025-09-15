@@ -90,6 +90,11 @@ if command -v lazygit &>/dev/null; then
   alias lg='lazygit'
 fi
 
+# df alternative
+if command -v duf &>/dev/null; then
+  alias df='duf'
+fi
+
 # fastfetch on startup
 if command -v fastfetch &>/dev/null; then
     fastfetch

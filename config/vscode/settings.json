@@ -34,10 +34,10 @@
   "explorer.compactFolders": false,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     { "text": "Subject should be 50 characters or less" },
-    { "text": "Use the imperative mood in the subject line" },
+    { "text": "Use the imperative mood in both body and summary" },
     { "text": "Provide a detailed description" },
     {
-      "text": "Use bullet points for detailed changes of each file in body"
+      "text": "Detail the changes for each file using a separate line, e.g., 'In <file_name>: - <description of change>.'"
     }
   ]
 }
