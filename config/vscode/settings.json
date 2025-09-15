@@ -37,7 +37,7 @@
     { "text": "Use the imperative mood" },
     { "text": "Description should be 50 characters or less" },
     {
-      "text": "Detail the changes for each file using a separate line or bullet point, e.g., '- <file_name>:\n    - <description of change>'"
+      "text": "Detail the changes for each file using a separate line or bullet point, e.g., '- <full_path>:\n    - <description of change>'"
     }
   ]
 }
