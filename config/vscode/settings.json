@@ -33,11 +33,11 @@
   "terminal.integrated.suggest.enabled": true,
   "explorer.compactFolders": false,
   "github.copilot.chat.commitMessageGeneration.instructions": [
-    { "text": "Subject should be 50 characters or less" },
-    { "text": "Use the imperative mood in both body and summary" },
-    { "text": "Provide a detailed description" },
+    { "text": "Use conventional commit message format" },
+    { "text": "Use the imperative mood" },
+    { "text": "Description should be 50 characters or less" },
     {
-      "text": "Detail the changes for each file using a separate line, e.g., 'In <file_name>: - <description of change>.'"
+      "text": "Detail the changes for each file using a separate line or bullet point, e.g., '- <file_name>:\n    - <description of change>'"
     }
   ]
 }
