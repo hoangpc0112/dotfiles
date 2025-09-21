@@ -4,18 +4,18 @@ These dotfiles combine configurations from many sources, so they're not 100% my 
 
 # Program
 
-| Component          | Program                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------ |
-| Windows Manager 🪟 | [hyprland](https://github.com/hyprwm/Hyprland)                                             |
-| Terminal 🖥️        | [kitty](https://github.com/kovidgoyal/kitty)                                               |
-| Shell 🐚           | [bash](https://github.com/bminor/bash)                                                     |
-| File Manager 📁    | [yazi](https://github.com/sxyazi/yazi)                                            |
+| Component          | Program                                                                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Windows Manager 🪟 | [hyprland](https://github.com/hyprwm/Hyprland)                                                                                             |
+| Terminal 🖥️        | [kitty](https://github.com/kovidgoyal/kitty)                                                                                               |
+| Shell 🐚           | [zsh](https://www.zsh.org/)                                                                                                                |
+| File Manager 📁    | [yazi](https://github.com/sxyazi/yazi)                                                                                                     |
 | Editor 📝          | [neovim](https://github.com/neovim/neovim) / [lazyvim](https://github.com/LazyVim/LazyVim) / [vscode](https://github.com/microsoft/vscode) |
-| Browser 🌐         | [zen browser](https://github.com/zen-browser/desktop)                                      |
-| Bar 📊             | [waybar](https://github.com/Alexays/Waybar)                                                |
-| Launcher 🚀        | [rofi](https://github.com/davatorium/rofi)                                                 |
-| Lockscreen 🔒      | [hyprlock](https://github.com/hyprwm/hyprlock)                                             |
-| Login Menu 🚪      | [sddm](https://github.com/sddm/sddm)                                                       |
+| Browser 🌐         | [zen](https://github.com/zen-browser/desktop) / [brave](https://brave.com/)                                                                |
+| Bar 📊             | [waybar](https://github.com/Alexays/Waybar)                                                                                                |
+| Launcher 🚀        | [rofi](https://github.com/davatorium/rofi)                                                                                                 |
+| Lockscreen 🔒      | [hyprlock](https://github.com/hyprwm/hyprlock)                                                                                             |
+| Login Menu 🚪      | [sddm](https://github.com/sddm/sddm)                                                                                                       |
 
 # Previews
 

@@ -17,12 +17,19 @@ install_paru() {
 
 install_packages() {
   paru -Syu --noconfirm
-  paru -S --noconfirm --needed hyprland hyprlock hypridle waybar rofi fastfetch fzf starship kitty feh mpv \
-    unzip unrar neovim python python-pip nodejs npm jdk-openjdk gcc make bat tar bash-completion wget zoxide curl \
-    zen-browser-bin inter-font ttf-jetbrains-mono-nerd fcitx5 fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt papirus-icon-theme \
-    breeze-gtk sddm swww cliphist grimblast wl-clipboard obs-studio vesktop-bin xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
-    bibata-cursor-theme-bin ripgrep fd ufw lazygit openssh zip onlyoffice-bin visual-studio-code-bin localsend-bin gammastep tree \
-    brightnessctl yazi lsd tldr trash-cli zsh auto-cpufreq duf ttf-ms-fonts 
+
+  paru -S --noconfirm --needed hyprland hyprlock hypridle waybar \
+  rofi fastfetch fzf starship kitty feh mpv unzip unrar neovim \
+  python python-pip nodejs npm jdk-openjdk gcc make bat tar \
+  wget zoxide curl inter-font ttf-jetbrains-mono-nerd fcitx5 \ fcitx5-configtool fcitx5-bamboo fcitx5-gtk fcitx5-qt \
+  papirus-icon-theme breeze-gtk sddm swww cliphist wl-clipboard \
+  obs-studio xdg-desktop-portal-hyprland qt6-wayland btop blueman dunst \
+  ripgrep fd ufw lazygit openssh zip gammastep tree brightnessctl yazi \
+  lsd tldr trash-cli zsh duf
+
+  # AUR packages
+  paru -S --noconfirm --needed zen-browser-bin grimblast vesktop-bin \ bibata-cursor-theme-bin onlyoffice-bin visual-studio-code-bin localsend-bin \ auto-cpufreq ttf-ms-fonts
+
   ya pkg add kalidyasin/yazi-flavors:tokyonight-night
 }
 

@@ -248,3 +248,10 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # disable case-sentitive for tab auto-completions
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# pnpm
+export PNPM_HOME="/home/hoangpc0112/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
