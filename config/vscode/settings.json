@@ -34,10 +34,10 @@
   "explorer.compactFolders": false,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     { "text": "Use conventional commit message format" },
-    { "text": "Use the imperative mood" },
+    { "text": "Use the imperative mood for description" },
     { "text": "Description should be 50 characters or less" },
     {
-      "text": "Detail the changes for each file using a separate line or bullet point, e.g., '- <full_path>:\n    + <description of change>'"
+      "text": "Detail the changes for each file in imperative mood using a separate line or bullet point, e.g., '- <full_path>:\n    + <description of change>'"
     }
   ],
   "codesnap.containerPadding": "1em",
